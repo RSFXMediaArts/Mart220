@@ -4,14 +4,58 @@ var burgerLettersX = 75;
 var burgerLettersY = 125;
 var mouseSesameSeedX = 160;
 var mouseSesameSeedY = 180;
+var bob;
+var fries;
+var cow;
+var cowX;
+var cowY;
+var cowXSpeed = 2;
+var cowYSpeed = 1.5;
+var cowXDirection = 1;
+var cowYDirection = 1;
+var timerValue = 20;
+
+function preload()
+{
+bob = loadImage('Images/Bob.png');
+fries = loadImage('Images/fries.png');
+cow = loadImage('Images/ChickFilACow.png');
+myFont1 = loadFont('Fonts/BurgerHut.ttf');
+myFont2 = loadFont('Fonts/GodGivenName.ttf');
+myFont3 = loadFont('Fonts/Simpleness.otf');
+setInterval(timeIt, 1000);
+}
 
 function setup()
 {
     createCanvas(400,400);
+    frameRate(30);
+    cowX = width /3;
+    cowY = height /3;
 }
 function draw() 
 {
     background(95,158,160);
+    cowX = cowX + cowXSpeed * cowXDirection;
+    cowY = cowY + cowYSpeed * cowYDirection;
+    image(cow,cowX,cowY);
+    if (cowX > 300 || cowX < 0)
+    {
+        cowXDirection *= -1;
+    }
+    if (cowY > 400 - 62 || cowY < 0)
+    {
+        cowYDirection *= -1;
+    }
+    if (timerValue >= 10) {
+        text("0:" + timerValue, 25, 375);
+      }
+      if (timerValue < 10) {
+        text('0:0' + timerValue, 25, 375);
+      }
+      if (timerValue == 0) {
+        text('EAT MORE CHIKIN!!', 75, 375);
+      }
     strokeWeight(1);
     //Top Bun
     stroke(0);
@@ -148,21 +192,26 @@ function draw()
     //Name
     textSize(20);
     fill(148,0,211);
+    textFont(myFont2);
     text('Richie Sibley', 275,385);
 
     //Drawing Title
     textSize(24);
     fill(255,255,0);
+    textFont(myFont1);
     text('My Favorite Food', 10, 25);
 
     //Movement instruction text
-    textSize(20);
+    textSize(16);
     fill(199,21,133);
+    textFont(myFont3);
     text('Use "w" "a" "s" "d" to move the straw!',35,60);
 
     //Mouse click Instruction text
     fill(255,255,255);
     text('Click the mouse to move a Sesame Seed!',15,355);
+    image(bob,320,220);
+    image(fries,0,240);
 }
  //Mouse Clicked Sesame Seed Placement
  function mouseClicked()
@@ -170,3 +219,9 @@ function draw()
      mouseSesameSeedX = mouseX;
      mouseSesameSeedY = mouseY;
  }
+
+ function timeIt() {
+    if (timerValue > 0) {
+      timerValue--;
+    }
+  }
