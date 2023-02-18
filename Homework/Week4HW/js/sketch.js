@@ -23,9 +23,7 @@ var walkAnimation = [];
 var i = 0;
 var MyZombieObject;
 
-var ABurger;
-var burgerArray = [];
-var BurgerObject;
+//var mySesameSeed;
 var z = 0;
 
 function preload() {
@@ -33,7 +31,6 @@ function preload() {
     fries = loadImage('Images/fries.png');
     cow = loadImage('Images/ChickFilACow.png');
     walkAnimation = loadStrings('Images/walkinganimation.txt');
-    ABurger = loadImage('Images/burger.png');
     myFont1 = loadFont('Fonts/BurgerHut.ttf');
     myFont2 = loadFont('Fonts/GodGivenName.ttf');
     myFont3 = loadFont('Fonts/Simpleness.otf');
@@ -44,8 +41,8 @@ function setup() {
     createCanvas(400, 400);
     MyZombieObject = new myZombie(walkAnimation);
     MyZombieObject.animate();
-    BurgerObject = new myBurger;
-    setInterval(displayCounter, 50);
+    myBurgerPatty = new myBurgerPatty(random(10, width), random(20, height), random(5, 150));
+    setInterval(incrementIndex, 50);
     frameRate(30);
     cowX = width / 3;
     cowY = height / 3;
@@ -228,6 +225,7 @@ function draw() {
     image(bob, 320, 220);
     image(fries, 0, 240);
     MyZombieObject.draw(i)
+    myBurgerPatty.drawEllipse();
     
 }
 //Mouse Clicked Sesame Seed Placement
@@ -249,8 +247,16 @@ function displayCounter() {
     }
 }
 
+
 function timeIt() {
     if (timerValue > 0) {
         timerValue--;
+    }
+}
+function incrementIndex()
+{
+    i += 1;
+    if (i >= walkAnimation.length) {
+        i = 0;
     }
 }

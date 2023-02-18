@@ -42,16 +42,19 @@ class myZombie
 
 }
 
-class myBurger
+class myBurgerPatty
 {
-    constructor()
+    constructor(x,y,w,h)
     {
-        this.ABurgerX = ABurgerX;
-        this.AburgerY = AburgerY;
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
         
     }
-draw()
+drawEllipse()
 {
-    image(this.ABurger, 150, 150, 100,100);
+    fill(153, 76, 0);
+    ellipse(this.x, this.y, this.w, this.h);
 }
 }
