@@ -20,6 +20,7 @@ var counter = 0;
 var zombert;
 var zombieArray = [];
 var walkAnimation = [];
+var idleAnimation = [];
 var i = 0;
 var MyZombieObject;
 
@@ -30,7 +31,8 @@ function preload() {
     bob = loadImage('Images/Bob.png');
     fries = loadImage('Images/fries.png');
     cow = loadImage('Images/ChickFilACow.png');
-    walkAnimation = loadStrings('Images/walkinganimation.txt');
+    walkAnimation = loadStrings('Images/WalkAnim/walkinganimation.txt');
+    idleAnimation = loadStrings('Images/IdleAnim/idleanimation.txt');
     myFont1 = loadFont('Fonts/BurgerHut.ttf');
     myFont2 = loadFont('Fonts/GodGivenName.ttf');
     myFont3 = loadFont('Fonts/Simpleness.otf');
@@ -49,10 +51,6 @@ function setup() {
 }
 function draw() {
     background(95, 158, 160);
-    //for (var i = 0; i < myZombie.length; i++)
-    // {
-    //image(zombieArray[i], 100, 100, 80, 120);
-    // }
     cowX = cowX + cowXSpeed * cowXDirection;
     cowY = cowY + cowYSpeed * cowYDirection;
     image(cow, cowX, cowY);
