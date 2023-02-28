@@ -1,0 +1,10 @@
+../Images/WalkAnim/Walk_000.png
+../Images/WalkAnim/Walk_001.png
+../Images/WalkAnim/Walk_002.png
+../Images/WalkAnim/Walk_003.png
+../Images/WalkAnim/Walk_004.png
+../Images/WalkAnim/Walk_005.png
+../Images/WalkAnim/Walk_006.png
+../Images/WalkAnim/Walk_007.png
+../Images/WalkAnim/Walk_008.png
+../Images/WalkAnim/Walk_009.png

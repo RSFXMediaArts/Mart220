@@ -1,0 +1,15 @@
+../Images/IdleAnim/Idle_000.png
+../Images/IdleAnim/Idle_001.png
+../Images/IdleAnim/Idle_002.png
+../Images/IdleAnim/Idle_003.png
+../Images/IdleAnim/Idle_004.png
+../Images/IdleAnim/Idle_005.png
+../Images/IdleAnim/Idle_006.png
+../Images/IdleAnim/Idle_007.png
+../Images/IdleAnim/Idle_008.png
+../Images/IdleAnim/Idle_009.png
+../Images/IdleAnim/Idle_010.png
+../Images/IdleAnim/Idle_011.png
+../Images/IdleAnim/Idle_012.png
+../Images/IdleAnim/Idle_013.png
+../Images/IdleAnim/Idle_014.png
