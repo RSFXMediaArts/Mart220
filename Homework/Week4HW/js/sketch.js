@@ -18,11 +18,13 @@ var timerValue = 20;
 var counter = 0;
 
 var zombert;
+var zombertChill;
 var zombieArray = [];
 var walkAnimation = [];
 var idleAnimation = [];
 var i = 0;
 var MyZombieObject;
+var MyZombieIdle;
 
 //var mySesameSeed;
 var z = 0;
@@ -41,10 +43,10 @@ function preload() {
 
 function setup() {
     createCanvas(400, 400);
-    MyZombieObject = new myZombie(walkAnimation);
-    MyZombieObject.animate();
+    MyZombieObject = new animationImage(walkAnimation, 25, 100, 150, 150);
+    MyZombieIdle = new animationImage(idleAnimation, 25, 100, 150, 150);
     myBurgerPatty = new myBurgerPatty(random(10, width), random(20, height), random(5, 150));
-    setInterval(incrementIndex, 50);
+    //setInterval(incrementIndex, 80);
     frameRate(30);
     cowX = width / 3;
     cowY = height / 3;
@@ -124,21 +126,21 @@ function draw() {
     strokeWeight(0);
     fill(255, 255, 255);
     rect(strawX, strawY, 10, 40);
-    if (keyIsPressed) {
-        if (key == 'a') {
-            strawX -= 5;
-        }
-
-        else if (key == 'd') {
-            strawX += 5;
-        }
-        else if (key == 'w') {
-            strawY -= 5;
-        }
-        else if (key == 's') {
-            strawY += 5;
-        }
-    }
+    //if (keyIsPressed) {
+    //    if (key == 'a') {
+    //        MyZombieObject -= 5;
+    //    }
+    //
+    //   else if (key == 'd') {
+    //        strawX += 5;
+    //   }
+    //    else if (key == 'w') {
+    //        strawY -= 5;
+    //    }
+    //    else if (key == 's') {
+    //        strawY += 5;
+    //    }
+    //}
 
 
     //~Details~
@@ -222,8 +224,33 @@ function draw() {
     text('Click the mouse to move a Sesame Seed!', 15, 355);
     image(bob, 320, 220);
     image(fries, 0, 240);
-    MyZombieObject.draw(i)
     myBurgerPatty.drawEllipse();
+    if(keyIsPressed)
+    {
+        if(key == 'd')
+        {
+            MyZombieObject.setCurrentFrameCount(frameCount);
+            MyZombieObject.drawAnimation();
+            MyZombieObject.updatePosition('forward');
+            MyZombieIdle.updatePosition('forward');
+        }
+        else if(key == 'a')
+        {
+            MyZombieObject.setCurrentFrameCount(frameCount);
+            MyZombieObject.drawAnimation();
+            MyZombieObject.updatePosition('reverse');
+            MyZombieIdle.updatePosition('reverse');
+        }
+        else
+        {
+            MyZombieIdle.setCurrentFrameCount(frameCount);
+            MyZombieIdle.draw();
+        }
+    }
+    else
+    {
+        MyZombieIdle.drawAnimation();
+    }
     
 }
 //Mouse Clicked Sesame Seed Placement
@@ -251,10 +278,10 @@ function timeIt() {
         timerValue--;
     }
 }
-function incrementIndex()
+/*function incrementIndex()
 {
     i += 1;
     if (i >= walkAnimation.length) {
         i = 0;
     }
-}
+}*/
