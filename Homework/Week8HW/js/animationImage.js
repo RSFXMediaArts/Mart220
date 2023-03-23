@@ -36,8 +36,9 @@ class animationImage {
         this.currentFrameCount = currentFrameCount;
     }
 
+    //Tried setting this to kinematic but it still rotates. 
     createAnimation() {
-        this.currentAnimation = createSprite(this.x, this.y);
+        this.currentAnimation = createSprite(this.x, this.y, this.width, this.height, 'kinematic');
     }
 
     loadAnimation(animationType, fileNames) 
@@ -45,6 +46,7 @@ class animationImage {
         this.currentAnimation.addAnimation(animationType, fileNames[0], fileNames[fileNames.length - 1]);
         this.currentAnimation.width = 300;
         this.currentAnimation.height = 150;
+        
     }
 
 
@@ -53,32 +55,37 @@ class animationImage {
         this.currentAnimation.frameDelay = 5;
         this.currentAnimation.scale = .3;
         this.currentAnimation.changeAnimation(animationType);
+        //this.currentAnimation.kinematic = true; * this doesn't work
         if (animationType == 'walk' && this.direction == 'forward') {
             this.currentAnimation.direction = 0;
             this.currentAnimation.mirror.x = false;
-            this.currentAnimation.speed = 1;
+            this.currentAnimation.speed = 2;
+            //this.currentAnimation.kinematic * nope
         }
         else if (animationType == 'walk' && this.direction == 'reverse') {
             this.currentAnimation.mirror.x = true;
             this.currentAnimation.direction = 180;
-            this.currentAnimation.speed = 1;
+            this.currentAnimation.speed = 2;
+            //this.currentAnimation.kinematic * nope
         }
         else if (animationType == 'walk' && this.direction == 'down') {
             this.currentAnimation.mirror.x = false;
             this.currentAnimation.direction = 90;
-            this.currentAnimation.speed = 1;
+            this.currentAnimation.speed = 2;
+            //this.currentAnimation.kinematic * nope
         }
         else if (animationType == 'walk' && this.direction == 'up') {
             this.currentAnimation.mirror.x = false;
             this.currentAnimation.direction = 270;
-            this.currentAnimation.speed = 1;
+            this.currentAnimation.speed = 2;
+            //this.currentAnimation.kinematic * nope
         }
         else {
             this.currentAnimation.velocity.x = 0;
         }
     }
 
-    /*incrementIndex() 
+    incrementIndex() 
     {
         if (this.currentFrameCount % 5 == 0) {
             this.i++;
@@ -87,7 +94,7 @@ class animationImage {
         if (this.i >= this.fileNames.length) {
             this.i = 0;
         }
-    }*/
+    }
 
     updatePosition(direction) 
     {
@@ -98,5 +105,7 @@ class animationImage {
     {
         return this.currentAnimation.collide(myImage);
     }
+
+    
 
 }
