@@ -41,6 +41,11 @@ class animationImage {
         this.currentAnimation = createSprite(this.x, this.y, this.width, this.height, 'kinematic');
     }
 
+    getCurrentAnimation()
+    {
+        return this.currentAnimation;
+    }
+
     loadAnimation(animationType, fileNames) 
     {
         this.currentAnimation.addAnimation(animationType, fileNames[0], fileNames[fileNames.length - 1]);
