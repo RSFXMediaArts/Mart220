@@ -19,6 +19,7 @@ function preload() {
     walkPaths = loadAnimation('Images/WalkAnim/Walk_000.png', 'Images/WalkAnim/Walk_009.png');
     attackPaths = loadAnimation('Images/AttackAnim/Attack (1).png', 'Images/AttackAnim/Attack (8).png');
     mySpaceBG = loadImage('Images/Starfield.jpg');
+    loadFont('fonts/Crows.ttf')
 }
 
 function setup() {
@@ -45,6 +46,7 @@ function setup() {
 function draw() {
 
     background(mySpaceBG);
+    textFont(Crows, 24);
     textSize(24);
     fill(255);
     text("Score:" + score, 10, 20);
