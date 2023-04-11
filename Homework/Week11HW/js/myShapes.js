@@ -1,6 +1,6 @@
 class myShapes
 {
-    constructor(shapetype, param1, param2, param3, translateX, translateY, rotateXvalue, rotateYvalue, rotateZvalue, textureValue)
+    constructor(shapetype, param1, param2, param3, translateX, translateY, rotateX, rotateY, rotateZ, textureValue)
     {
         this.shapetype = shapetype;
         this.param1 = param1;
