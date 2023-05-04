@@ -1,40 +1,54 @@
-let earth;
-let air;
-let fire;
-let water;
-let metal;
-let Elements;
-let skulltexture;
+
+let skull;
+let bg;
+let smoke;
+let gif_loadImg;
+let gif_createImg;
+let smoke_loadImg;
+let smoke_createImg;
 let shapeArray = [];
 var boxTranslationX = 225;
 var boxTranslationY = -145;
 
 function preload()
 {
-    earth = loadImage('images/earth.jpg');
-    air = loadImage('images/air.jpg');
+    gif_loadImg = loadImage('images/flames.gif');
+    gif_createImg = createImg('images/flames.gif');
+    smoke_loadImg = loadImage('images/smoke-lab.gif');
+    smoke_createImg = createImg('images/smoke-lab.gif');
     fire = loadImage('images/fire.jpg');
-    water = loadImage('images/water.png');
-    metal = loadImage('images/metal.jpg');
+    skull = loadImage('images/Skull01.png');
+    smoke = loadImage('images/smoke.jpg');
     newfont = loadFont('fonts/Crows.ttf');
-    skulltexture = loadImage('images/BoneTexture.jpg');
-    Elements = loadModel('3Dmodels/Elements.stl');
+    bg = loadImage('images/Background.jpg');
 }
 
 function setup()
 {
     createCanvas(800,600,WEBGL);
-    shapeArray.push(new myShapes("cylinder",50, 150, 24, 275, 150, 0.1,0.02, 0, water));
-    shapeArray.push(new myShapes("box", 150, 150, 150, boxTranslationX, boxTranslationY, 0.04, 0.03, 0, fire));
 }
 
 function draw()
 {
-    background(105,105,105);
+    //background(0,0,0);
     textFont(newfont);
     textSize(32);
     fill(255);
-    text("The Elements", -80, -270);
+    image(bg, -400,-300);
+    image(gif_loadImg, -400, 190);
+      gif_createImg.position (0, -600);
+      image(gif_loadImg, 290, 190);
+      gif_createImg.position (0, -600);
+      image(gif_loadImg, -65, 190);
+      gif_createImg.position (0, -600);
+      image(smoke_loadImg, -400, 100);
+      smoke_createImg.position (0, -600);
+      image(smoke_loadImg, -50, 100);
+      smoke_createImg.position (0, -600);
+      image(smoke_loadImg, -250, -300);
+      smoke_createImg.position (0, -600);
+    image(skull, -150, -225);
+    text("Born In Fire!", -80, -270);
     text("by Richard Sibley", -90, -240);
     normalMaterial();
 
@@ -42,65 +56,38 @@ function draw()
         shapeArray[i].draw(frameCount);
       }
 
-    //Elements Text
+    //Eye (Left)
     push();
-    scale(0.5);
-    rotateX(frameCount * 0.03);
-    //rotateY(frameCount * 0.03);
-    model(Elements);
-    pop();
-
-    //Earth Nation
-    push();
-    translate(-250, -150);
+    translate(-60, -1);
     rotateX(frameCount * 0.05);
     rotateY(frameCount * 0.01);
-    texture(earth);
-    sphere(100);
-    pop();
-
-    //Fire Nation
-    /*push();
-    translate(275, -150);
-    rotateX(frameCount * 0.01);
-    rotateY(frameCount * 0.03);
     texture(fire);
-    torus(70, 15);
-    pop();*/
+    sphere(30);
+    pop();
 
-    //Air Nation
+    //Eye (Right)
     push();
-    translate(-250, 150);
-    //rotateZ(frameCount * 0.1);
-    rotateX(frameCount * 0.5);
+    translate(60, -1);
+    rotateX(frameCount * 0.05);
     rotateY(frameCount * 0.01);
-    texture(air);
-    ellipsoid(50, 100,75, 24, 24);
+    texture(fire);
+    sphere(30);
+    pop();
+    
+    push();
+    translate(300, -200);
+    rotateX(frameCount * 0.50);
+    rotateY(frameCount * 0.01);
+    texture(smoke);
+    sphere(60);
     pop();
 
-    if (mouseIsPressed) {
-        boxTranslationX = 0;
-        boxTranslationY = 0;
-        boxTranslationX = floor(random(800));
-        boxTranslationY = floor(random(600));
-      }
-
-    //Water Nation
-    /*push();
-    translate(275,150);
-    rotateX(frameCount * 0.1);
-    rotateY(frameCount * 0.02);
-    texture(water);
-    cylinder(50, 150, 24, 24, false, false);
-    pop();
-
-    //Metal
-    /*push();
-    translate(0,0);
-    rotateX(frameCount * 0.01);
+    push();
+    translate(-300, -200);
+    rotateX(frameCount * 0.20);
     rotateY(frameCount * 0.01);
-    texture(metal);
-    box(120, 120, 120);
-    pop();*/
+    texture(smoke);
+    sphere(60);
+    pop();
 
 }
